@@ -1,0 +1,2 @@
+./tanki/Scripts/python -V || python -m venv ./tanki
+./tanki/Scripts/pip install -r libraries.txt
