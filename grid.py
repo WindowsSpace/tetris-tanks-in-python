@@ -2,8 +2,8 @@ from settings import CELL_SIZE, OFFSET_X, OFFSET_Y, BOARD_WIDTH, BOARD_HEIGHT
 
 def grid_to_pixel_center(gx, gy):
     # Перевод координат клетки (gx, gy) в пиксели (центр)
-    px = OFFSET_X + gx * CELL_SIZE + CELL_SIZE // 2
-    py = OFFSET_Y + gy * CELL_SIZE + CELL_SIZE // 2
+    px = OFFSET_X + (gx + 0.5) * CELL_SIZE
+    py = OFFSET_Y + (gy + 0.5) * CELL_SIZE
     return px, py
 
 def in_bounds(gx, gy):
