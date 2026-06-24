@@ -1,16 +1,19 @@
 import pygame
 
-# Окно
 WIDTH = 700
 HEIGHT = 700
 BACKGROUND_COLOR = (137, 145, 113)
+INACTIVE_COLOR = (129, 136, 111)
 
 # Сетка
 BOARD_WIDTH = 10
-BOARD_HEIGHT = 18
+BOARD_HEIGHT = 16  
 CELL_SIZE = 43
-OFFSET_X = 0
-OFFSET_Y = 0
+OFFSET_X = 5      
+OFFSET_Y = 5       
+
+HUD_START_X = OFFSET_X + (BOARD_WIDTH * CELL_SIZE) + CELL_SIZE
+HUD_BOARD_Y = OFFSET_Y + (6 * CELL_SIZE)
 
 # Направления
 DIR_UP = (0, -1)
@@ -27,35 +30,28 @@ DIR_TO_ANGLE = {
 
 # Управление
 PLAYER_MOVE_KEYS = {
-    pygame.K_w: DIR_UP,
-    pygame.K_UP: DIR_UP,
-    pygame.K_s: DIR_DOWN,
-    pygame.K_DOWN: DIR_DOWN,
-    pygame.K_a: DIR_LEFT,
-    pygame.K_LEFT: DIR_LEFT,
-    pygame.K_d: DIR_RIGHT,
-    pygame.K_RIGHT: DIR_RIGHT,
+    pygame.K_w: DIR_UP, pygame.K_UP: DIR_UP,
+    pygame.K_s: DIR_DOWN, pygame.K_DOWN: DIR_DOWN,
+    pygame.K_a: DIR_LEFT, pygame.K_LEFT: DIR_LEFT,
+    pygame.K_d: DIR_RIGHT, pygame.K_RIGHT: DIR_RIGHT,
 }
-
 PLAYER_SHOOT_KEYS = {pygame.K_SPACE, pygame.K_RETURN}
 
-# Игровые параметры
-PLAYER_START_GRID = (5, 3)  # стартовые координаты игрока (по сетке)
-
-# Точки спавна по сетке
-ENEMY_SPAWN_POINTS = [
-    (0, 0),                      # левый верхний
-    (BOARD_WIDTH // 2, 0),       # центр верх
-    (BOARD_WIDTH - 1, 0),        # правый верхний
-    (BOARD_WIDTH // 2 - 2, BOARD_HEIGHT // 2),  # слева от центра
-    (BOARD_WIDTH // 2 + 2, BOARD_HEIGHT // 2),  # справа от центра
-    (0, BOARD_HEIGHT - 1),       # слева снизу
-    (BOARD_WIDTH // 2, BOARD_HEIGHT - 1),       # центр снизу
-    (BOARD_WIDTH - 1, BOARD_HEIGHT - 1),        # справа снизу
+# Случайные спавны игрока
+PLAYER_SPAWN_POINTS = [
+    (5, 14), (2, 14), (8, 14),
+    (5, 11), (2, 11), (8, 11),
+    (5, 8),
 ]
 
-MAX_ENEMIES_ON_FIELD = 3
-TOTAL_ENEMIES_TO_DESTROY = 50
+# Случайные спавны противника
+ENEMY_SPAWN_POINTS = [
+    (1, 1), (3, 1), (5, 1), (7, 1), (8, 1),
+    (1, 4), (8, 4),
+    (1, 7), (8, 7),
+    (3, 3), (6, 3), 
+    (4, 5), (6, 5),
+    (1, 14), (8, 14)
+]
 
-BULLET_SPEED = 5
-PLAYER_MOVE_DELAY_MS = 150   # задержка при зажатой кнопке
+PLAYER_MOVE_DELAY_MS = 150
